@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Database, ref, set, get, update, remove, child, onValue, push, query, orderByKey, limitToFirst, endAt, orderByChild, startAt } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CrudService {
+  private db=inject(Database);
   private dbRef = ref(this.db);
 
-  constructor(private db: Database) {}
 
   // addItem
   addItem<T>(data: T, dbName:string): Promise<void> {

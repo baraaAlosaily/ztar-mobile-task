@@ -1,11 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { WrapperComponent } from '../../shared';
 import { initFlowbite } from 'flowbite';
-import { ActivatedRoute } from '@angular/router';
 import { CrudService } from '../../../services';
 import {} from '@angular/common/http';
 import { HttpCrudService } from '../../../services/http-crud.service';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-details',

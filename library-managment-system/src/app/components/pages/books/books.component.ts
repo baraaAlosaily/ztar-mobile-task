@@ -1,13 +1,12 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Subject, debounceTime } from 'rxjs';
 import { initFlowbite } from 'flowbite';
 import { ICategory, ICategoryReq, ITableSetting } from '../../../models';
 import { WrapperComponent, CreateUpdateModalComponent, DeleteModalComponent} from '../../shared';
 import { CrudService } from '../../../services';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import {} from '@angular/common/http';
 
 @Component({
   selector: 'app-books',

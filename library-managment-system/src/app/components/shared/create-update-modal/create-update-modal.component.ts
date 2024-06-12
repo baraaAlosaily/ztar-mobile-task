@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ICategory } from '../../../models';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-create-update-modal',

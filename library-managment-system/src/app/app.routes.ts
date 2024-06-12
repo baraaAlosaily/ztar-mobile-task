@@ -1,8 +1,8 @@
-import { Routes } from '@angular/router';
 import {HomeComponent,LoginComponent,CategoriesComponent, BooksComponent, SignupComponent} from './components';
 import {authGuard} from './guards/auth/auth.guard';
 import { BookDetailsComponent } from './components/pages/book-details/book-details.component';
 import { ResolverService } from './services/resolver/resolver.service';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},

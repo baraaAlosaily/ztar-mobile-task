@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services';
 import { IUser } from '../../../models';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   providers: [AuthService]
