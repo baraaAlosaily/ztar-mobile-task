@@ -1,0 +1,35 @@
+<section class="mt-8 mb-10 mx-4 flex flex-col sm:grid sm:grid-flow-col lg:mt-[48px] lg:mb-[50px] lg:mx-[55px] items-center gap-8">
+  <section class="col-span-1 flex justify-center items-center">
+    <img src="assets/images/Illustration_Mobile.png" alt="illustration" class="w-[200px] h-[200px] sm:hidden">
+    <img src="assets/images/Illustration_tablet.png" alt="illustration" class="w-[260px] h-[260px] hidden sm:block lg:hidden">
+    <img src="assets/images/Illustration_desktop.png" alt="illustration" class="w-[260px] h-[260px] hidden lg:block">
+  </section>
+  <section class="flex flex-col items-center sm:items-start gap-4 w-[100%] col-span-1">
+    <p class="text-[28px] text-center leading-0 font-bold">Select the genre of books:</p>
+    <div class="flex flex-col items-center sm:items-start gap-4 w-[100%] lg:flex-row lg:items-end">
+      <div class="flex flex-col relative w-[100%] max-w-[400px]">
+        <p class="absolute top-0 left-4 bg-lmsRose100 text-xs p-1 rounded-sm">Filter</p>
+        <button (click)="toggleDropDown()" id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+        class="border border-lmsBlack200 px-4 py-4 rounded-lg flex justify-between items-center mt-3 h-14">
+          <p class="text-base text-lmsBlack300">{{selectedOption}}</p>
+          <img [ngClass]="{'rotate-180': toggleDropdown}" src="assets/images/arrow.svg" alt="arrow_down">
+        </button>
+          <!-- Dropdown menu -->
+          <div id="dropdown" [ngClass]="{'hidden': !toggleDropdown}" class="z-10 w-[75%] text-lmsBlack300  bg-gray-200 divide-y divide-gray-100 rounded-lg shadow h-[212px] overflow-auto">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                <li>
+                  <div (click)="onSelectCategoryForSearch(category)" *ngFor="let category of listOfCategories let i=index" class="px-4 py-2 hover:bg-gray-300 flex gap-4 items-center cursor-pointer">
+                    <img [ngClass]="{'invisible': category.name!==selectedOption}" src="assets/images/check.svg" alt="check">
+                    <p>{{category.name}}</p>
+                  </div>
+                </li>
+              </ul>
+          </div>
+      </div>
+      <button type="submit" class="text-lmsOrange700 px-6 py-4 bg-lmsWhite100 border border-lmsOrange700 rounded-[40px] shadow-lmsShadow_white">
+          Search
+      </button>
+    </div>
+    <p class="text-2xl text-center leading-0 mt-3">Total number of books is: <span class="font-bold">32</span></p>
+  </section>
+</section>

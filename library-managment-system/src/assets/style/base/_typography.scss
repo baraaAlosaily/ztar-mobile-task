@@ -1,0 +1,50 @@
+$font-primary: 'Roboto', sans-serif;
+
+$font-secondary: 'Arial', sans-serif;
+
+// Headings
+$h1-font-size: 2rem;
+$h2-font-size: 1.5rem;
+$h3-font-size: 1.25rem;
+
+// Paragraphs
+$paragraph-font-size: 1rem;
+
+// Buttons
+$button-font-size: 1rem;
+
+// Font weights
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-light: 300;
+
+// Line heights
+$line-height-normal: 1.5;
+$line-height-heading: 1.2;
+
+// Text colors
+$text-color: #333; // Default text color
+$link-color: #007bff; // Link color
+$button-text-color: #fff; // Button text color
+
+// Heading classes
+.heading {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+// Paragraph class
+.paragraph {
+  font-family: $font-secondary;
+  font-size: $paragraph-font-size;
+  line-height: $line-height-normal;
+}
+
+// Button class
+.button {
+  font-family: $font-primary;
+  font-size: $button-font-size;
+  font-weight: $font-weight-bold;
+  color: $button-text-color;
+}
