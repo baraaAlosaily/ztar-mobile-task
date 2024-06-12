@@ -7,7 +7,7 @@ import { ICategory, ICategoryReq, ITableSetting } from '../../../models';
 import { WrapperComponent, CreateUpdateModalComponent, DeleteModalComponent} from '../../shared';
 import { CrudService } from '../../../services';
 import { Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 
 @Component({
   selector: 'app-books',

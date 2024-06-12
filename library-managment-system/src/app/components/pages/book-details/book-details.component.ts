@@ -3,14 +3,14 @@ import { WrapperComponent } from '../../shared';
 import { initFlowbite } from 'flowbite';
 import { ActivatedRoute } from '@angular/router';
 import { CrudService } from '../../../services';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { HttpCrudService } from '../../../services/http-crud.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [WrapperComponent, HttpClientModule,CommonModule],
+  imports: [WrapperComponent,CommonModule],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss',
   providers: [HttpCrudService]
