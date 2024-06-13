@@ -1,5 +1,0 @@
-export * from './signup/signup.component'
-export * from './login/login.component'
-export * from './home/home.component'
-export * from './categories/categories.component'
-export * from './books/books.component'
