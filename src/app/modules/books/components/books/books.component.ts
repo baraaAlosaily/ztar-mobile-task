@@ -6,8 +6,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { Subject, debounceTime } from 'rxjs';
-import { IBook, ICategory, ICategoryReq, ITableSetting } from '../../../../models';
-import { CrudService } from '../../../../services';
+import { IBook, IBookFormEvent, ICategory, ICategoryReq, ITableSetting } from '../../../../models';
+import { CrudService, SeoOptimizationService } from '../../../../services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,6 +23,8 @@ export class BooksComponent implements OnInit {
   private searchSubject: Subject<string> = new Subject<string>();
   private crudService = inject(CrudService);
   private router = inject(Router);
+  private seo=inject(SeoOptimizationService);
+
 
   title = 'Books';
   size = 10;
@@ -60,6 +62,12 @@ export class BooksComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.seo.setTitle('Books');
+    this.seo.setMetaAuthor('ztar mobile');
+    this.seo.setMetaDescription('Books page');
+    this.seo.setMetaTags('books, books page, ztar mobile, library management system');
+    this.seo.setMetaTags('books, books page, ztar mobile, library management system');
+
     this.getAll();
     this.getAllItems();
     this.getSize();
@@ -192,10 +200,5 @@ export class BooksComponent implements OnInit {
     this.getSize();
     this.getAll();
   }
-}
-
-interface IBookFormEvent {
-  action: string;
-  data: IBook;
 }
 

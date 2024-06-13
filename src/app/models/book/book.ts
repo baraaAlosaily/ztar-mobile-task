@@ -21,3 +21,8 @@ export interface IBookDetails{
   infoLink: string;
 
 }
+
+export interface IBookFormEvent {
+  action: string;
+  data: IBook;
+}

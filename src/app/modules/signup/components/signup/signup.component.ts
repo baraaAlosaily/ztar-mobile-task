@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PasswordValidatorService } from '../../../../services';
+import { PasswordValidatorService, SeoOptimizationService } from '../../../../services';
 import { AuthService } from '../../../../services';
 
 @Component({
@@ -14,7 +14,9 @@ export class SignupComponent implements OnInit {
   pv = inject(PasswordValidatorService);
   as = inject(AuthService);
   router = inject(Router);
+  seo=inject(SeoOptimizationService);
   public message = '';
+
 
   signupForm = this.fb.group(
     {
@@ -37,7 +39,12 @@ export class SignupComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.as.user$.subscribe((user: any) => {
+    this.seo.setTitle('Signup');
+    this.seo.setMetaAuthor('ztar mobile');
+    this.seo.setMetaDescription('Signup page');
+    this.seo.setMetaTags('signup, signup page, ztar mobile, library management system');
+    this.seo.setMetaTags('signup, signup page, ztar mobile, library management system');
+    this.as.user$.subscribe((user) => {
       if (user) {
         this.router.navigate(['/']);
       }

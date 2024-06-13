@@ -1,14 +1,13 @@
 import {
   Component,
   ElementRef,
-  Input,
   ViewChild,
   inject,
   OnInit,
 } from '@angular/core';
 import { Subject, debounceTime } from 'rxjs';
-import { ICategory, ICategoryReq, ITableSetting } from '../../../../models';
-import { CrudService } from '../../../../services';
+import { ICategory, ICategoryFormEvent, ICategoryReq, ITableSetting } from '../../../../models';
+import { CrudService, SeoOptimizationService } from '../../../../services';
 
 @Component({
   selector: 'app-categories',
@@ -20,6 +19,7 @@ export class CategoriesComponent implements OnInit {
   @ViewChild('editButton') editButton!: ElementRef;
   @ViewChild('deleteButton') deleteButton!: ElementRef;
 
+  private seo=inject(SeoOptimizationService);
   private searchSubject: Subject<string> = new Subject<string>();
   private crudService = inject(CrudService);
 
@@ -27,7 +27,7 @@ export class CategoriesComponent implements OnInit {
   size = 10;
   totalSize = 1;
   page = 1;
-  items: any[] = [];
+  items: ICategory[] = [];
   loadingState = true;
   selectedItem: ICategory | null = null;
   searchQuery = '';
@@ -55,6 +55,12 @@ export class CategoriesComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.seo.setTitle('Categories');
+    this.seo.setMetaAuthor('ztar mobile');
+    this.seo.setMetaDescription('Categories page');
+    this.seo.setMetaTags('categories, categories page, ztar mobile, library management system');
+    this.seo.setMetaTags('categories, categories page, ztar mobile, library management system');
+
     this.getAll();
     this.getSize();
     this.searchSubject.pipe(debounceTime(500)).subscribe((search: string) => {
@@ -112,13 +118,13 @@ export class CategoriesComponent implements OnInit {
     this.getAll();
   }
 
-  addNew($event: any) {
+  addNew($event: ICategoryFormEvent) {
     console.log($event);
     this.loadingState = true;
     if ($event.action === 'Create') {
       this.crudService
         .addItem($event.data, 'categories')
-        .then((res) => {
+        .then(() => {
           this.getAll();
           this.getSize();
         })
@@ -129,7 +135,7 @@ export class CategoriesComponent implements OnInit {
       this.crudService
         .updateItemById(this.selectedItem?.id ?? '', $event.data, 'categories')
         .subscribe({
-          next: (data) => {
+          next: () => {
             this.getAll();
             this.getSize();
           },
@@ -140,14 +146,14 @@ export class CategoriesComponent implements OnInit {
     }
   }
 
-  searchChanges($event: any) {
+  searchChanges($event: string) {
     this.searchSubject.next($event);
   }
 
   deleteCategory($event: ICategory) {
     this.loadingState = true;
     this.crudService.deleteItemById($event?.id ?? '', 'categories').subscribe({
-      next: (data) => {
+      next: () => {
         this.getAll();
         this.getSize();
       },

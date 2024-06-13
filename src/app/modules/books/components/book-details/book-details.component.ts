@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { HttpCrudService } from '../../../../services';
+import { HttpCrudService, SeoOptimizationService } from '../../../../services';
 import { ActivatedRoute } from '@angular/router';
 import { IBook, IBookDetails } from '../../../../models';
 
@@ -10,13 +10,20 @@ import { IBook, IBookDetails } from '../../../../models';
   providers: [HttpCrudService],
 })
 export class BookDetailsComponent implements OnInit {
-  httpCrud = inject(HttpCrudService);
-  route = inject(ActivatedRoute);
+  private httpCrud = inject(HttpCrudService);
+  private route = inject(ActivatedRoute);
+  private seo=inject(SeoOptimizationService);
   data!: IBook;
   details: IBookDetails | null = null;
   loadingState = false;
 
   ngOnInit(): void {
+    this.seo.setTitle('Book Details');
+    this.seo.setMetaAuthor('ztar mobile');
+    this.seo.setMetaDescription('Book Details page');
+    this.seo.setMetaTags('book details, book details page, ztar mobile, library management system');
+    this.seo.setMetaTags('book details, book details page, ztar mobile, library management system');
+
     this.route.data.subscribe((data) => {
       console.log(data);
       this.data = data['data'];

@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService, PasswordValidatorService } from '../../../../services';
+import { AuthService, PasswordValidatorService, SeoOptimizationService } from '../../../../services';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   pv = inject(PasswordValidatorService);
   as = inject(AuthService);
   router = inject(Router);
+  seo=inject(SeoOptimizationService);
 
   public message = '';
 
@@ -23,11 +24,16 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.as.user$.subscribe((user: any) => {
+    this.as.user$.subscribe((user) => {
       if (user) {
         this.router.navigate(['/']);
       }
     });
+    this.seo.setTitle('Login');
+    this.seo.setMetaAuthor('ztar mobile');
+    this.seo.setMetaDescription('Login page');
+    this.seo.setMetaTags('login, login page, ztar mobile, library management system');
+    this.seo.setMetaTags('login, login page, ztar mobile, library management system');
   }
 
   login() {
@@ -38,7 +44,7 @@ export class LoginComponent implements OnInit {
           password: this.loginForm.value.password ?? '',
         })
         .subscribe({
-          next: (res) => {
+          next: () => {
             this.router.navigate(['/']);
           },
           error: (err) => {

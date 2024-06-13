@@ -1,4 +1,5 @@
 export interface ICategory {
+  [key: string]: unknown;
   name: string;
   description: string;
   books: number;
@@ -22,4 +23,9 @@ export interface IFakeCategory{
   id: number;
   name: string;
   value: string;
+}
+
+export interface ICategoryFormEvent {
+  action: string;
+  data: ICategory;
 }
